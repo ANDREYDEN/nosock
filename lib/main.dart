@@ -24,21 +24,17 @@ class NosokApp extends StatelessWidget {
     const routes = {...privateRoutes, ...publicRoutes};
     final routeName = routeSettings.name;
 
-    if (!routes.containsKey(routeName)) {
-      return MaterialPageRoute(builder: (context) => SignIn());
-    }
+    return MaterialPageRoute(builder: (context) {
+      if (!routes.containsKey(routeName)) {
+        return SignIn();
+      }
 
-    if (publicRoutes.containsKey(routeName)) {
-      return MaterialPageRoute(builder: (context) => routes[routeName]!);
-    }
+      if (publicRoutes.containsKey(routeName)) {
+        return routes[routeName]!;
+      }
 
-    if (privateRoutes.containsKey(routeName)) {
-      return MaterialPageRoute(
-        builder: (context) => AuthGuard(child: routes[routeName]!),
-      );
-    }
-
-    return null;
+      return AuthGuard(child: routes[routeName]!);
+    });
   }
 
   @override
