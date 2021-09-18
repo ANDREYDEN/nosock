@@ -93,6 +93,28 @@
       // Service workers not supported. Just drop the <script> tag.
       loadMainDartJs();
     }
-  </script>
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDBYnjg4UghawDODOS4R2Yp4p-e9M7TwDA",
+      authDomain: "nosok4all.firebaseapp.com",
+      projectId: "nosok4all",
+      storageBucket: "nosok4all.appspot.com",
+      messagingSenderId: "254569283498",
+      appId: "1:254569283498:web:ba425ad147d38a90d435d3",
+      measurementId: "G-2LSYM4D9HN"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
