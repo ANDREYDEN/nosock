@@ -25,7 +25,7 @@ class NosokApp extends StatelessWidget {
     final routeName = routeSettings.name;
 
     if (!routes.containsKey(routeName)) {
-      return MaterialPageRoute(builder: (context) => publicRoutes['sign-in']!);
+      return MaterialPageRoute(builder: (context) => SignIn());
     }
 
     if (publicRoutes.containsKey(routeName)) {
