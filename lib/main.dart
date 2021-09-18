@@ -1,20 +1,54 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:nosok/home.dart';
+import 'package:nosok/auth_guard.dart';
+import 'package:nosok/sign_in.dart';
+import 'home.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(NosokApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+const privateRoutes = {
+  Home.route: Home(),
+};
+
+const publicRoutes = {
+  SignIn.route: SignIn(),
+};
+
+class NosokApp extends StatelessWidget {
+  Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
+    const routes = {...privateRoutes, ...publicRoutes};
+    final routeName = routeSettings.name;
+
+    if (!routes.containsKey(routeName)) {
+      return MaterialPageRoute(builder: (context) => publicRoutes['sign-in']!);
+    }
+
+    if (publicRoutes.containsKey(routeName)) {
+      return MaterialPageRoute(builder: (context) => routes[routeName]!);
+    }
+
+    if (privateRoutes.containsKey(routeName)) {
+      return MaterialPageRoute(
+        builder: (context) => AuthGuard(child: routes[routeName]!),
+      );
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Nosok',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
-      home: Home(),
+      initialRoute: Home.route,
+      onGenerateRoute: this.onGenerateRoute,
     );
   }
 }
