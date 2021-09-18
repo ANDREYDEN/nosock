@@ -9,30 +9,32 @@ class AuthGuard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snap) {
-        if (snap.hasError) {
-          return Text('Error: ${snap.error}');
-        }
+    return Scaffold(
+      body: Center(
+        child: StreamBuilder<User?>(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snap) {
+            if (snap.hasError) {
+              return Text('Error: ${snap.error}');
+            }
 
-        if (snap.connectionState == ConnectionState.waiting) {
-          return Text('Loading...');
-        }
+            if (snap.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
 
-        final user = snap.data;
+            final user = snap.data;
 
-        if (user == null) {
-          return ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(SignIn.route);
-            },
-            child: Text('Please sign in'),
-          );
-        }
+            if (user == null) {
+              Future.delayed(Duration(milliseconds: 100)).then((value) {
+                Navigator.of(context).pushNamed(SignIn.route);
+              });
+              return CircularProgressIndicator();
+            }
 
-        return child;
-      },
+            return child;
+          },
+        ),
+      ),
     );
   }
 }
