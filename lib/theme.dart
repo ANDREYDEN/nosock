@@ -34,6 +34,13 @@ final ThemeData mainTheme = ThemeData(
       onPrimary: Colors.black,
     ),
   ),
+  textTheme: TextTheme(
+    headline3: TextStyle(
+      fontSize: 20,
+      color: Colors.black,
+      fontWeight: FontWeight.w800,
+    ),
+  ),
 );
 
 final TextStyle appBarTextStyle = TextStyle(

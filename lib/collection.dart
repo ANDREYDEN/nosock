@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nosok/empty_sock_collection.dart';
 import 'package:nosok/models/sock.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/services/firestore.dart';
@@ -27,7 +28,7 @@ class Collection extends StatelessWidget {
         stream: Firestore.sockStream(Auth.currentUser!.uid),
         builder: (context, List<Sock> socks) {
           if (socks.isEmpty) {
-            return Text('No socks');
+            return EmptySockCollection(); 
           }
           return ListView.builder(
             itemCount: socks.length,
