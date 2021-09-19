@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nosok/services/auth.dart';
+import 'package:nosok/services/firestore.dart';
 import 'package:nosok/shared/custom_text_field.dart';
 import 'package:nosok/shared/simple_scaffold.dart';
 import 'package:nosok/theme.dart';
@@ -99,9 +100,13 @@ class _SockFormState extends State<SockForm> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 18),
-              child: ElevatedButton(onPressed: () {
-                
-              }, child: Text('Save')),
+              child: ElevatedButton(
+                onPressed: () async {
+                  await Firestore.addSock(_sock);
+                  Navigator.of(context).pop();
+                },
+                child: Text('Save'),
+              ),
             ),
           ],
         ),
