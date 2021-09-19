@@ -4,7 +4,8 @@ import 'package:nosok/models/sock.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/services/firestore.dart';
 import 'package:nosok/shared/custom_stream_builder.dart';
-import 'package:nosok/theme.dart';
+import 'package:nosok/shared/simple_scaffold.dart';
+import 'package:nosok/sock_form.dart';
 
 import 'listItems/sock_list_item.dart';
 
@@ -15,25 +16,23 @@ class Collection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'My Collection',
-          style: appBarTextStyle,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+    return SimpleScaffold(
+      title: 'My Collection',
+      fab: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => SockForm()),
+          );
+        },
         child: Icon(Icons.add, color: Colors.black),
       ),
-      body: CustomStreamBuilder<List<Sock>>(
+      child: CustomStreamBuilder<List<Sock>>(
         stream: Firestore.sockStream(Auth.currentUser!.uid),
         builder: (context, List<Sock> socks) {
           if (socks.isEmpty) {
             return EmptySockCollection();
           }
           return GridView.builder(
-            padding: EdgeInsets.symmetric(horizontal: 20),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 24,
