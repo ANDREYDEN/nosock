@@ -16,12 +16,9 @@ class BottomNavigationScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(top: 40),
-          child: Text(
-            title,
-            style: appBarTextStyle,
-          ),
+        title: Text(
+          title,
+          style: appBarTextStyle,
         ),
       ),
       body: body,
