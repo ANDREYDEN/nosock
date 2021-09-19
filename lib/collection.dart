@@ -6,6 +6,8 @@ import 'package:nosok/services/firestore.dart';
 import 'package:nosok/shared/custom_stream_builder.dart';
 import 'package:nosok/theme.dart';
 
+import 'listItems/sock_list_item.dart';
+
 class Collection extends StatelessWidget {
   static const String route = '/collection';
 
@@ -22,19 +24,19 @@ class Collection extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.black),
       ),
       body: CustomStreamBuilder<List<Sock>>(
         stream: Firestore.sockStream(Auth.currentUser!.uid),
         builder: (context, List<Sock> socks) {
           if (socks.isEmpty) {
-            return EmptySockCollection(); 
+            return EmptySockCollection();
           }
           return ListView.builder(
             itemCount: socks.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(socks[index].name),
+                title: SockListItem(sock: socks[index]),
               );
             },
           );

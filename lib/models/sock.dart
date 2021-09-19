@@ -4,6 +4,7 @@ class Sock {
   final int size;
   final String owner;
   final String locationLost;
+  List<String> photoUrls;
 
   Sock({
     required this.name,
@@ -11,7 +12,10 @@ class Sock {
     required this.size,
     required this.owner,
     required this.locationLost,
+    this.photoUrls = const [],
   });
+
+  String? get preview => photoUrls.isEmpty ? null : photoUrls.first;
 
 
   Map<String, dynamic> toFirestore() {
@@ -20,7 +24,8 @@ class Sock {
       'description': description,
       'size': size,
       'locationLost': locationLost,
-      'owner': owner
+      'owner': owner,
+      'photoUrls': photoUrls
     };
   }
 
@@ -31,6 +36,7 @@ class Sock {
       size: map['size'],
       owner: map['owner'],
       locationLost: map['locationLost'],
+      photoUrls: map['photoUrls'].map<String>((url) => url.toString()).toList()
     );
   }
 
