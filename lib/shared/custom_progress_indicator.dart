@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nosok/theme.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator({Key? key}) : super(key: key);
@@ -7,9 +6,7 @@ class CustomProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(
-        color: primaryColor,
-      ),
+      child: CircularProgressIndicator(),
     );
   }
 }
