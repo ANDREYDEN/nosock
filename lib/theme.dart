@@ -10,9 +10,13 @@ final ThemeData mainTheme = ThemeData(
   fontFamily: 'WorkSans',
   primarySwatch: primarySwatch,
   iconTheme: IconThemeData(color: Colors.black),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: secondaryColor,  
+  ),
   appBarTheme: AppBarTheme(
     centerTitle: true,
     backgroundColor: Colors.white,
+    iconTheme: IconThemeData(color: Colors.black),
     elevation: 0,
   ),
   bottomAppBarTheme: BottomAppBarTheme(
@@ -28,6 +32,13 @@ final ThemeData mainTheme = ThemeData(
   textButtonTheme: TextButtonThemeData(
     style: ElevatedButton.styleFrom(
       onPrimary: Colors.black,
+    ),
+  ),
+  textTheme: TextTheme(
+    headline3: TextStyle(
+      fontSize: 20,
+      color: Colors.black,
+      fontWeight: FontWeight.w800,
     ),
   ),
 );
