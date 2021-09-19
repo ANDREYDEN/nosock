@@ -12,16 +12,16 @@ class Home extends StatelessWidget {
     return BottomNavigationScaffold(
       body: Container(
         padding: EdgeInsets.all(16.0),
-        alignment: Alignment.topCenter,
         child: Column(
           children: [
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(primaryColor),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
                 elevation: MaterialStateProperty.all(0),
               ),
@@ -32,54 +32,55 @@ class Home extends StatelessWidget {
                     Flexible(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              'Top Picks for you',
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                            ),
-                          ),
+                          Text('Top Picks for you',
+                              style: Theme.of(context).textTheme.headline3),
+                          SizedBox(height: 10),
                           Text(
                             'Explore potential matches for your lonely socks',
-                            style: TextStyle(fontSize: 14),
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                         ],
                       ),
                     ),
-                    new SvgPicture.asset('assets/SockIcon.svg')
+                    SvgPicture.asset('assets/TopPick.svg')
                   ],
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Row(
-                  children: [
-                    Text('Trading Requests'),
-                  ],
-                ),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.grey.shade300),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)),
-                ),
-              ),
-            ),
+            SizedBox(height: 40),
+            tradeActionButton(label: 'Trading Requests', onClick: () {}),
+            SizedBox(height: 16),
+            tradeActionButton(label: 'Trades', onClick: () {}),
+            SizedBox(height: 40),
           ],
         ),
       ),
       title: 'Your Socks Collection',
     );
   }
+
+  Widget tradeActionButton({
+    required String label,
+    required void Function() onClick,
+  }) =>
+      TextButton(
+        onPressed: onClick,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.grey.shade300),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(label),
+              SvgPicture.asset('assets/Arrow.svg'),
+            ],
+          ),
+        ),
+      );
 }

@@ -51,7 +51,7 @@ class BottomNavigationScaffold extends StatelessWidget {
             children: [
               bottomAppBarAction(
                 context,
-                icon: new SvgPicture.asset('assets/SockIcon.svg'),
+                icon: SvgPicture.asset('assets/SockIcon.svg'),
                 label: 'My Collection',
                 onTap: () {
                   Navigator.of(context).pushNamed(Collection.route);
