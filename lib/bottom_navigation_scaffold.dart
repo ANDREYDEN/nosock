@@ -6,8 +6,10 @@ import 'package:nosok/theme.dart';
 
 class BottomNavigationScaffold extends StatelessWidget {
   final Widget body;
+  final String title;
 
-  const BottomNavigationScaffold({Key? key, required this.body})
+  const BottomNavigationScaffold(
+      {Key? key, required this.body, required this.title})
       : super(key: key);
 
   @override
@@ -15,7 +17,7 @@ class BottomNavigationScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Nosok',
+          title,
           style: appBarTextStyle,
         ),
       ),

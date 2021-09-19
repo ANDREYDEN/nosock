@@ -9,7 +9,6 @@ class Collection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationScaffold(
-      body: Text('My Collection'),
-    );
+        body: Text('My Collection'), title: 'Collection');
   }
 }

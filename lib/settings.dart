@@ -8,6 +8,9 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationScaffold(body: Text('Settings'));
+    return BottomNavigationScaffold(
+      body: Text('Settings'),
+      title: 'Settings',
+    );
   }
 }

@@ -11,6 +11,7 @@ final ThemeData mainTheme = ThemeData(
   primarySwatch: primarySwatch,
   iconTheme: IconThemeData(color: Colors.black),
   appBarTheme: AppBarTheme(
+    centerTitle: true,
     backgroundColor: Colors.white,
     elevation: 0,
   ),
@@ -26,7 +27,12 @@ final ThemeData mainTheme = ThemeData(
   ),
 );
 
-final TextStyle appBarTextStyle = TextStyle(color: Colors.black);
+final TextStyle appBarTextStyle = TextStyle(
+  color: Colors.black,
+  fontFamily: 'Inter',
+  fontWeight: FontWeight.w600,
+  fontSize: 22,
+);
 
 MaterialColor createMaterialColor(Color color) {
   List strengths = <double>[.05];
