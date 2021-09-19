@@ -11,7 +11,7 @@ final ThemeData mainTheme = ThemeData(
   primarySwatch: primarySwatch,
   iconTheme: IconThemeData(color: Colors.black),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: secondaryColor,  
+    backgroundColor: secondaryColor,
   ),
   appBarTheme: AppBarTheme(
     centerTitle: true,
@@ -39,6 +39,13 @@ final ThemeData mainTheme = ThemeData(
       fontSize: 20,
       color: Colors.black,
       fontWeight: FontWeight.w800,
+    ),
+    headline6: TextStyle(
+      // link
+      fontSize: 14,
+      color: primaryColor,
+      fontWeight: FontWeight.w600,
+      decoration: TextDecoration.underline,
     ),
   ),
 );
