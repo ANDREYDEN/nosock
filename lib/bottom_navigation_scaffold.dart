@@ -16,9 +16,12 @@ class BottomNavigationScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          title,
-          style: appBarTextStyle,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 40),
+          child: Text(
+            title,
+            style: appBarTextStyle,
+          ),
         ),
       ),
       body: body,
@@ -46,26 +49,29 @@ class BottomNavigationScaffold extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              bottomAppBarAction(
-                context,
-                icon: SvgPicture.asset('assets/SockIcon.svg'),
-                label: 'My Collection',
-                onTap: () {
-                  Navigator.of(context).pushNamed(Collection.route);
-                },
-              ),
-              bottomAppBarAction(
-                context,
-                icon: Icon(Icons.perm_identity, color: Colors.white),
-                label: 'Settings',
-                onTap: () {
-                  Navigator.of(context).pushNamed(Settings.route);
-                },
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 35, right: 46),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                bottomAppBarAction(
+                  context,
+                  icon: SvgPicture.asset('assets/SockIcon.svg'),
+                  label: 'My Collection',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(Collection.route);
+                  },
+                ),
+                bottomAppBarAction(
+                  context,
+                  icon: Icon(Icons.perm_identity, color: Colors.white),
+                  label: 'Settings',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(Settings.route);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
