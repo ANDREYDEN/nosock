@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nosok/collection.dart';
 import 'package:nosok/settings.dart';
 import 'package:nosok/theme.dart';
@@ -48,7 +49,7 @@ class BottomNavigationScaffold extends StatelessWidget {
             children: [
               bottomAppBarAction(
                 context,
-                icon: Icons.sports_hockey_sharp,
+                icon: new SvgPicture.asset('assets/SockIcon.svg'),
                 label: 'My Collection',
                 onTap: () {
                   Navigator.of(context).pushNamed(Collection.route);
@@ -56,7 +57,7 @@ class BottomNavigationScaffold extends StatelessWidget {
               ),
               bottomAppBarAction(
                 context,
-                icon: Icons.perm_identity,
+                icon: Icon(Icons.perm_identity, color: Colors.white),
                 label: 'Settings',
                 onTap: () {
                   Navigator.of(context).pushNamed(Settings.route);
@@ -71,7 +72,7 @@ class BottomNavigationScaffold extends StatelessWidget {
 
   Widget bottomAppBarAction(
     context, {
-    required IconData icon,
+    required Widget icon,
     required String label,
     required void Function() onTap,
   }) =>
@@ -80,7 +81,7 @@ class BottomNavigationScaffold extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: Colors.white),
+            icon,
             SizedBox(height: 8),
             Text(label, style: TextStyle(color: Colors.white)),
           ],
