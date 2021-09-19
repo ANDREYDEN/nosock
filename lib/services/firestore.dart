@@ -13,4 +13,8 @@ class Firestore {
               .toList(),
         );
   }
+
+  static Future<void> addSock(Sock sock) async {
+    await _socks.add(sock.toFirestore());
+  }
 }

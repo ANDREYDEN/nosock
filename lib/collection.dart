@@ -32,12 +32,16 @@ class Collection extends StatelessWidget {
           if (socks.isEmpty) {
             return EmptySockCollection();
           }
-          return ListView.builder(
+          return GridView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 24,
+              childAspectRatio: 0.75,
+            ),
             itemCount: socks.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: SockListItem(sock: socks[index]),
-              );
+              return SockListItem(sock: socks[index]);
             },
           );
         },
