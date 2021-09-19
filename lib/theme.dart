@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 const primaryColor = Color(0xFFFF5F77);
 const secondaryColor = Color(0xFFFFDB29);
 const primaryText = Color(0xFF0F0F0F);
+const secondaryText = Color(0xFF737373);
+const tertiaryText = Color(0xFFB6B6B6);
 
 final primarySwatch = createMaterialColor(primaryColor);
 
