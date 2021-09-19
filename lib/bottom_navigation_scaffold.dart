@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nosok/collection.dart';
 import 'package:nosok/settings.dart';
+import 'package:nosok/theme.dart';
 
 class BottomNavigationScaffold extends StatelessWidget {
   final Widget body;
@@ -11,18 +12,32 @@ class BottomNavigationScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nosok')),
+      appBar: AppBar(
+        title: Text(
+          'Nosok',
+          style: appBarTextStyle,
+        ),
+      ),
       body: body,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FloatingActionButton(
-            backgroundColor: Colors.amberAccent,
-            child: const Icon(
-              Icons.swap_horizontal_circle,
-              color: Colors.pink,
-              size: 35,
+          backgroundColor: secondaryColor,
+          child: Container(
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(
+              color: primaryColor,
+              shape: BoxShape.circle,
             ),
-            onPressed: () {}),
+            child: const Icon(
+              Icons.swap_horiz,
+              color: Colors.white,
+              size: 25,
+            ),
+          ),
+          onPressed: () {},
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

@@ -8,7 +8,10 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationScaffold(
-      body: Text("Nosok"),
+      body: ElevatedButton(
+        onPressed: () {},
+        child: Text("Nosok"),
+      ),
     );
   }
 }

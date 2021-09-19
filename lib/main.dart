@@ -4,6 +4,7 @@ import 'package:nosok/auth_guard.dart';
 import 'package:nosok/collection.dart';
 import 'package:nosok/settings.dart';
 import 'package:nosok/sign_in.dart';
+import 'package:nosok/theme.dart';
 
 import 'home.dart';
 
@@ -45,9 +46,7 @@ class NosokApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Nosok',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-      ),
+      theme: mainTheme,
       initialRoute: Home.route,
       onGenerateRoute: this.onGenerateRoute,
     );
