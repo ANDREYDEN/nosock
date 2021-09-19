@@ -7,6 +7,7 @@ const primaryText = Color(0xFF0F0F0F);
 final primarySwatch = createMaterialColor(primaryColor);
 
 final ThemeData mainTheme = ThemeData(
+  fontFamily: 'WorkSans',
   primarySwatch: primarySwatch,
   iconTheme: IconThemeData(color: Colors.black),
   appBarTheme: AppBarTheme(
