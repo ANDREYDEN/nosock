@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xFFFF5F77);
 const secondaryColor = Color(0xFFFFDB29);
+const primaryText = Color(0xFF0F0F0F);
 
 final primarySwatch = createMaterialColor(primaryColor);
 
@@ -11,6 +12,10 @@ final ThemeData mainTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
     elevation: 0,
+  ),
+  bottomAppBarTheme: BottomAppBarTheme(
+    color: primaryText,
+    shape: CircularNotchedRectangle(),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

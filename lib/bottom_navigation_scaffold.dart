@@ -41,34 +41,49 @@ class BottomNavigationScaffold extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              GestureDetector(
+              bottomAppBarAction(
+                context,
+                icon: Icons.sports_hockey_sharp,
+                label: 'My Collection',
                 onTap: () {
                   Navigator.of(context).pushNamed(Collection.route);
                 },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.style), Text('My Collection')],
-                ),
               ),
-              GestureDetector(
+              bottomAppBarAction(
+                context,
+                icon: Icons.perm_identity,
+                label: 'Settings',
                 onTap: () {
                   Navigator.of(context).pushNamed(Settings.route);
                 },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.perm_identity), Text('Settings')],
-                ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget bottomAppBarAction(
+    context, {
+    required IconData icon,
+    required String label,
+    required void Function() onTap,
+  }) =>
+      GestureDetector(
+        onTap: onTap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: Colors.white),
+            SizedBox(height: 8),
+            Text(label, style: TextStyle(color: Colors.white)),
+          ],
+        ),
+      );
 }
