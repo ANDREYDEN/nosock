@@ -23,6 +23,7 @@ class Home extends StatelessWidget {
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0)),
                 ),
+                elevation: MaterialStateProperty.all(0),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -52,6 +53,26 @@ class Home extends StatelessWidget {
                     ),
                     new SvgPicture.asset('assets/SockIcon.svg')
                   ],
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Row(
+                  children: [
+                    Text('Trading Requests'),
+                  ],
+                ),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.grey.shade300),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
                 ),
               ),
             ),

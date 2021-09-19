@@ -25,6 +25,11 @@ final ThemeData mainTheme = ThemeData(
       onPrimary: Colors.black,
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      onPrimary: Colors.black,
+    ),
+  ),
 );
 
 final TextStyle appBarTextStyle = TextStyle(
