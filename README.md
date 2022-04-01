@@ -17,9 +17,6 @@ Trade socks from your collection with other users
 We used love, care and appreciation for our socks!
 Also, using Flutter, Firebase and Meterial Design for designs.
 
-## What we learned
-Socks are awesome and they deserve a second life! Let's make it happen together!
-
 ## What's next for Nosock
 Our ambition is to become the biggest sock trading platform in the universe! We're almost there:)
 
