@@ -17,9 +17,6 @@ Trade socks from your collection with other users
 We used love, care and appreciation for our socks!
 Also, using Flutter, Firebase and Meterial Design for designs.
 
-## Accomplishments that we're proud of
-C'mon, isn't this the best app you ever heard of?
-
 ## What we learned
 Socks are awesome and they deserve a second life! Let's make it happen together!
 
