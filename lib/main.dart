@@ -11,7 +11,7 @@ import 'home.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(NosokApp());
+  runApp(NosockApp());
 }
 
 const privateRoutes = {
@@ -24,7 +24,7 @@ const publicRoutes = {
   SignIn.route: SignIn(),
 };
 
-class NosokApp extends StatelessWidget {
+class NosockApp extends StatelessWidget {
   Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     const routes = {...privateRoutes, ...publicRoutes};
     final routeName = routeSettings.name;
@@ -45,7 +45,7 @@ class NosokApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nosok',
+      title: 'Nosock',
       theme: mainTheme,
       initialRoute: Home.route,
       onGenerateRoute: this.onGenerateRoute,
