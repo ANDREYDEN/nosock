@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
 
@@ -10,15 +11,15 @@ class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nosok')),
-      body: Container(
-        child: Center(
+      body: Column(children: [
+        SvgPicture.asset('assets/SignIn.svg'),
+        Center(
           child: ElevatedButton(
             onPressed: () => signIn(context),
             child: Text('Sign In With Google'),
           ),
         ),
-      ),
+      ]),
     );
   }
 
