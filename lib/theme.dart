@@ -37,6 +37,12 @@ final ThemeData mainTheme = ThemeData(
     ),
   ),
   textTheme: TextTheme(
+    headline1: TextStyle(
+      fontSize: 28,
+      fontFamily: 'Inter',
+      color: Colors.black,
+      fontWeight: FontWeight.w700,
+    ),
     headline3: TextStyle(
       fontSize: 20,
       color: Colors.black,

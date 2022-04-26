@@ -13,6 +13,17 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: Column(children: [
         SvgPicture.asset('assets/SignIn.svg'),
+        Text(
+          'Welcome to',
+          style: TextStyle(fontSize: 16),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 20.0),
+          child: Text(
+            'Nosock',
+            style: Theme.of(context).textTheme.headline1,
+          ),
+        ),
         Center(
           child: ElevatedButton(
             onPressed: () => signIn(context),

@@ -76,7 +76,8 @@ flutter:
   fonts:
    - family: Inter
      fonts:
-       - asset: assets/Inter.ttf
+       - asset: assets/Inter-Bold.ttf
+       - asset: assets/Inter-SemiBold.ttf
    - family: WorkSans
      fonts:
        - asset: assets/WorkSans.ttf
