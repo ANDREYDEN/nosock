@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
+import 'package:nosok/theme.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -24,10 +25,21 @@ class SignIn extends StatelessWidget {
             style: Theme.of(context).textTheme.headline1,
           ),
         ),
-        Center(
+        Container(
+          margin: const EdgeInsets.all(20),
           child: ElevatedButton(
             onPressed: () => signIn(context),
-            child: Text('Sign In With Google'),
+            child: Text('Sign In'),
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size.fromHeight(48),
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () => signIn(context),
+          child: Text(
+            'Sign Up',
+            style: TextStyle(color: primaryColor),
           ),
         ),
       ]),

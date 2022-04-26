@@ -55,6 +55,10 @@ final ThemeData mainTheme = ThemeData(
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.underline,
     ),
+    button: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
   ),
 );
 
