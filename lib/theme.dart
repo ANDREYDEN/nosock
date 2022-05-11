@@ -29,6 +29,7 @@ final ThemeData mainTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       primary: secondaryColor,
       onPrimary: Colors.black,
+      minimumSize: const Size.fromHeight(48),
     ),
   ),
   textButtonTheme: TextButtonThemeData(

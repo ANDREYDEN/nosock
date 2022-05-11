@@ -28,9 +28,6 @@ class SignIn extends StatelessWidget {
           margin: const EdgeInsets.all(20),
           child: ElevatedButton(
               child: Text('Sign In'),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(48),
-              ),
               onPressed: () {
                 showModalBottomSheet<void>(
                   context: context,

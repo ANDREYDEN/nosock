@@ -9,9 +9,8 @@ class SignInPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 800,
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -23,7 +22,9 @@ class SignInPopup extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline1,
               ),
             ),
+            SizedBox(height: 5),
             Text("Let's find a perfect pair for you sock :)"),
+            SizedBox(height: 30),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
@@ -31,11 +32,19 @@ class SignInPopup extends StatelessWidget {
                 labelText: 'Email Address',
               ),
             ),
+            SizedBox(height: 10),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Password',
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Align(
+                child: Text('Forgot password?'),
+                alignment: Alignment.centerRight,
               ),
             ),
             ElevatedButton(
@@ -64,9 +73,20 @@ class SignInPopup extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              child: const Text('Continue with Google'),
+              child: const Text(
+                'Continue With Google',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                ),
+              ),
               onPressed: () => signIn(context),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: Colors.black,
+              ),
             ),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
