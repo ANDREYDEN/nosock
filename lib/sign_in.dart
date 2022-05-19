@@ -13,11 +13,12 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: Column(children: [
         Flexible(
-            child: OverflowBox(
-          child: SvgPicture.asset('assets/SignIn.svg'),
-          maxHeight: 1000,
-          maxWidth: 1000,
-        )),
+          child: OverflowBox(
+            child: SvgPicture.asset('assets/SignIn.svg'),
+            maxHeight: 1000,
+            maxWidth: 1000,
+          ),
+        ),
         Text(
           'Welcome to',
           style: TextStyle(fontSize: 16),
@@ -36,6 +37,8 @@ class SignIn extends StatelessWidget {
               onPressed: () {
                 showModalBottomSheet<void>(
                   context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
                   builder: (BuildContext context) {
                     return SignInPopup();
                   },

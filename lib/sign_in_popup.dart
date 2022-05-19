@@ -9,10 +9,17 @@ class SignInPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: new BoxDecoration(
+        color: Colors.white,
+        borderRadius: new BorderRadius.only(
+            topLeft: const Radius.circular(13),
+            topRight: const Radius.circular(13)),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             SizedBox(height: 30),
             Align(
@@ -26,7 +33,6 @@ class SignInPopup extends StatelessWidget {
             Text("Let's find a perfect pair for you sock :)"),
             SizedBox(height: 30),
             TextField(
-              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Email Address',
@@ -96,7 +102,8 @@ class SignInPopup extends StatelessWidget {
                   style: TextStyle(color: primaryColor),
                 )
               ],
-            )
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),
