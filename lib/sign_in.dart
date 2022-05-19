@@ -12,7 +12,12 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: [
-        SvgPicture.asset('assets/SignIn.svg'),
+        Flexible(
+            child: OverflowBox(
+          child: SvgPicture.asset('assets/SignIn.svg'),
+          maxHeight: 1000,
+          maxWidth: 1000,
+        )),
         Text(
           'Welcome to',
           style: TextStyle(fontSize: 16),
@@ -44,6 +49,7 @@ class SignIn extends StatelessWidget {
             style: TextStyle(color: primaryColor),
           ),
         ),
+        SizedBox(height: 48)
       ]),
     );
   }
