@@ -49,6 +49,12 @@ class _SignInPopupState extends State<SignInPopup> {
                   border: OutlineInputBorder(),
                   labelText: 'Email Address',
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 10),
               TextFormField(
@@ -58,6 +64,12 @@ class _SignInPopupState extends State<SignInPopup> {
                   border: OutlineInputBorder(),
                   labelText: 'Password',
                 ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a valid password';
+                  }
+                  return null;
+                },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
@@ -67,9 +79,9 @@ class _SignInPopupState extends State<SignInPopup> {
                 ),
               ),
               ElevatedButton(
-                child: const Text('Sign In'),
-                onPressed: () => signIn(context),
-              ),
+                  child: const Text('Sign In'),
+                  onPressed: () =>
+                      {if (_formKey.currentState!.validate()) signIn(context)}),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
@@ -137,6 +149,7 @@ class _SignInPopupState extends State<SignInPopup> {
   Future<void> signIn(context) async {
     var email = _emailKey.currentState?.value;
     var password = _passwordKey.currentState?.value;
+
     try {
       await Auth.signIn(email, password);
       Navigator.of(context).pushNamed(Home.route);
