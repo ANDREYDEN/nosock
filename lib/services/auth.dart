@@ -11,6 +11,11 @@ class Auth {
     return _instance.authStateChanges().first;
   }
 
+  static Future<UserCredential> signIn(String email, String password) {
+    return FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+  }
+
   static Future<UserCredential> signInWithGoogle() {
     return kIsWeb ? _signInWithGoogleForWeb() : _signInWithGoogleNative();
   }
