@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nosok/sign_in_popup.dart';
+import 'package:nosok/sign_popup.dart';
 import 'package:nosok/theme.dart';
 
 class SignIn extends StatelessWidget {
@@ -40,18 +40,26 @@ class SignIn extends StatelessWidget {
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,
                   builder: (BuildContext context) {
-                    return SignInPopup();
+                    return SignPopup(Method.SignIn);
                   },
                 );
               }),
         ),
         TextButton(
-          onPressed: () {},
-          child: Text(
-            'Sign Up',
-            style: TextStyle(color: primaryColor),
-          ),
-        ),
+            child: Text(
+              'Sign Up',
+              style: TextStyle(color: primaryColor),
+            ),
+            onPressed: () {
+              showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (BuildContext context) {
+                  return SignPopup(Method.SignUp);
+                },
+              );
+            }),
         SizedBox(height: 48)
       ]),
     );

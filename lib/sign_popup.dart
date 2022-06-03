@@ -3,15 +3,19 @@ import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/theme.dart';
 
-class SignInPopup extends StatefulWidget {
-  const SignInPopup({Key? key}) : super(key: key);
+enum Method { SignIn, SignUp }
+
+class SignPopup extends StatefulWidget {
+  const SignPopup(this.method, {Key? key}) : super(key: key);
+  final Method method;
 
   @override
-  State<SignInPopup> createState() => _SignInPopupState();
+  State<SignPopup> createState() => _SignPopupState();
 }
 
-class _SignInPopupState extends State<SignInPopup> {
+class _SignPopupState extends State<SignPopup> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormFieldState> _fullNameKey = GlobalKey<FormFieldState>();
   final GlobalKey<FormFieldState> _emailKey = GlobalKey<FormFieldState>();
   final GlobalKey<FormFieldState> _passwordKey = GlobalKey<FormFieldState>();
 
@@ -43,6 +47,25 @@ class _SignInPopupState extends State<SignInPopup> {
               SizedBox(height: 5),
               Text("Let's find a perfect pair for you sock :)"),
               SizedBox(height: 30),
+              if (this.widget.method == Method.SignUp)
+                Column(
+                  children: [
+                    TextFormField(
+                      key: _fullNameKey,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Full Name',
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter a valid name';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                ),
               TextFormField(
                 key: _emailKey,
                 decoration: InputDecoration(
@@ -71,17 +94,29 @@ class _SignInPopupState extends State<SignInPopup> {
                   return null;
                 },
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: Align(
-                  child: Text('Forgot password?'),
-                  alignment: Alignment.centerRight,
+              if (this.widget.method == Method.SignIn)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Align(
+                    child: Text('Forgot password?'),
+                    alignment: Alignment.centerRight,
+                  ),
                 ),
+              Visibility(
+                child: ElevatedButton(
+                    child: const Text('Sign In'),
+                    onPressed: () => {
+                          if (_formKey.currentState!.validate()) signIn(context)
+                        }),
+                replacement: Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: ElevatedButton(
+                    child: const Text('Sign Up'),
+                    onPressed: () => {},
+                  ),
+                ),
+                visible: this.widget.method == Method.SignIn,
               ),
-              ElevatedButton(
-                  child: const Text('Sign In'),
-                  onPressed: () =>
-                      {if (_formKey.currentState!.validate()) signIn(context)}),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Row(
@@ -121,9 +156,11 @@ class _SignInPopupState extends State<SignInPopup> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account yet?"),
+                  Text(this.widget.method == Method.SignIn
+                      ? "Don't have an account yet?"
+                      : 'Already have an account?'),
                   Text(
-                    ' Sign Up',
+                    ' Sign ${this.widget.method == Method.SignIn ? 'Up' : 'In'}',
                     style: TextStyle(color: primaryColor),
                   )
                 ],
