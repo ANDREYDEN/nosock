@@ -159,9 +159,24 @@ class _SignPopupState extends State<SignPopup> {
                   Text(this.widget.method == Method.SignIn
                       ? "Don't have an account yet?"
                       : 'Already have an account?'),
-                  Text(
-                    ' Sign ${this.widget.method == Method.SignIn ? 'Up' : 'In'}',
-                    style: TextStyle(color: primaryColor),
+                  TextButton(
+                    child: Text(
+                      ' Sign ${this.widget.method == Method.SignIn ? 'Up' : 'In'}',
+                      style: TextStyle(color: primaryColor),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      showModalBottomSheet<void>(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (BuildContext context) {
+                          return SignPopup(this.widget.method == Method.SignIn
+                              ? Method.SignUp
+                              : Method.SignIn);
+                        },
+                      );
+                    },
                   )
                 ],
               ),
