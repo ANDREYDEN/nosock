@@ -16,6 +16,14 @@ class Auth {
         .signInWithEmailAndPassword(email: email, password: password);
   }
 
+  static Future<UserCredential> signUp(
+      String email, String password, String fullName) async {
+    final user = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
+    FirebaseAuth.instance.currentUser?.updateDisplayName(fullName);
+    return user;
+  }
+
   static Future<UserCredential> signInWithGoogle() {
     return kIsWeb ? _signInWithGoogleForWeb() : _signInWithGoogleNative();
   }

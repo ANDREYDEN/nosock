@@ -112,7 +112,9 @@ class _SignPopupState extends State<SignPopup> {
                   padding: const EdgeInsets.only(top: 20.0),
                   child: ElevatedButton(
                     child: const Text('Sign Up'),
-                    onPressed: () => {},
+                    onPressed: () => {
+                      if (_formKey.currentState!.validate()) signUp(context)
+                    },
                   ),
                 ),
                 visible: this.widget.method == Method.SignIn,
@@ -207,6 +209,19 @@ class _SignPopupState extends State<SignPopup> {
       Navigator.of(context).pushNamed(Home.route);
     } catch (e) {
       print('Something went wrong while signing in: ' + e.toString());
+    }
+  }
+
+  Future<void> signUp(context) async {
+    var email = _emailKey.currentState?.value;
+    var password = _passwordKey.currentState?.value;
+    var fullName = _fullNameKey.currentState?.value;
+
+    try {
+      await Auth.signUp(email, password, fullName);
+      Navigator.of(context).pushNamed(Home.route);
+    } catch (e) {
+      print('Something went wrong while signing up: ' + e.toString());
     }
   }
 }
