@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/theme.dart';
+import 'package:nosok/utils/contstants.dart';
 
 enum Method { SignIn, SignUp }
 
@@ -73,7 +74,8 @@ class _SignPopupState extends State<SignPopup> {
                   labelText: 'Email Address',
                 ),
                 validator: (String? value) {
-                  if (value == null || value.isEmpty) {
+                  bool emailValid = RegExp(kEmailRegex).hasMatch(value ?? '');
+                  if (value == null || value.isEmpty || !emailValid) {
                     return 'Please enter a valid email';
                   }
                   return null;
@@ -91,6 +93,10 @@ class _SignPopupState extends State<SignPopup> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a valid password';
                   }
+                  if (value.length < 6) {
+                    return 'Password should be at least 6 charachters long';
+                  }
+
                   return null;
                 },
               ),
