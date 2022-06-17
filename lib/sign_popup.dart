@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
@@ -19,6 +20,8 @@ class _SignPopupState extends State<SignPopup> {
   final GlobalKey<FormFieldState> _fullNameKey = GlobalKey<FormFieldState>();
   final GlobalKey<FormFieldState> _emailKey = GlobalKey<FormFieldState>();
   final GlobalKey<FormFieldState> _passwordKey = GlobalKey<FormFieldState>();
+
+  String authenticationError = '';
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +102,16 @@ class _SignPopupState extends State<SignPopup> {
 
                   return null;
                 },
+              ),
+              Visibility(
+                visible: authenticationError.isNotEmpty,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    authenticationError,
+                    style: TextStyle(color: Theme.of(context).errorColor),
+                  ),
+                ),
               ),
               if (this.widget.method == Method.SignIn)
                 Padding(
@@ -213,8 +226,17 @@ class _SignPopupState extends State<SignPopup> {
     try {
       await Auth.signIn(email, password);
       Navigator.of(context).pushNamed(Home.route);
+    } on FirebaseAuthException catch (e) {
+      var errorMessage = e.message;
+      if (errorMessage == null) throw Exception();
+      setState(() {
+        authenticationError =
+            'Something went wrong while signing in: ' + errorMessage;
+      });
     } catch (e) {
-      print('Something went wrong while signing in: ' + e.toString());
+      setState(() {
+        authenticationError = 'Something went wrong while signing in.';
+      });
     }
   }
 
@@ -226,8 +248,17 @@ class _SignPopupState extends State<SignPopup> {
     try {
       await Auth.signUp(email, password, fullName);
       Navigator.of(context).pushNamed(Home.route);
+    } on FirebaseAuthException catch (e) {
+      var errorMessage = e.message;
+      if (errorMessage == null) throw Exception();
+      setState(() {
+        authenticationError =
+            'Something went wrong while signing up: ' + errorMessage;
+      });
     } catch (e) {
-      print('Something went wrong while signing up: ' + e.toString());
+      setState(() {
+        authenticationError = 'Something went wrong while signing up.';
+      });
     }
   }
 }
