@@ -8,6 +8,9 @@ class GetToKnowPopup extends StatefulWidget {
 }
 
 class _GetToKnowPopupState extends State<GetToKnowPopup> {
+  final List<String> sockSizes = ['4-6', '7-8', '9-11'];
+  String? selectedSockSize;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +31,7 @@ class _GetToKnowPopupState extends State<GetToKnowPopup> {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Let us get to know you better',
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
             SizedBox(height: 5),
@@ -41,6 +44,21 @@ class _GetToKnowPopupState extends State<GetToKnowPopup> {
                 border: OutlineInputBorder(),
                 labelText: 'Location',
               ),
+            ),
+            DropdownButton<String>(
+              hint: Text('Foot Size'),
+              value: selectedSockSize,
+              items: sockSizes.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedSockSize = newValue!;
+                });
+              },
             ),
             ElevatedButton(
               child: const Text('Next'),
