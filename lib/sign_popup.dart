@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nosok/get_to_know_popup.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/theme.dart';
@@ -240,6 +241,15 @@ class _SignPopupState extends State<SignPopup> {
     }
   }
 
+  _renderShowModal() {
+    return showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return GetToKnowPopup();
+      },
+    );
+  }
+
   Future<void> signUp(context) async {
     var email = _emailKey.currentState?.value;
     var password = _passwordKey.currentState?.value;
@@ -247,7 +257,8 @@ class _SignPopupState extends State<SignPopup> {
 
     try {
       await Auth.signUp(email, password, fullName);
-      Navigator.of(context).pushNamed(Home.route);
+      Navigator.of(context).pop();
+      _renderShowModal();
     } on FirebaseAuthException catch (e) {
       var errorMessage = e.message;
       if (errorMessage == null) throw Exception();
