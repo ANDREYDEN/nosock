@@ -4,7 +4,7 @@ import 'package:nosok/get_to_know_popup.dart';
 import 'package:nosok/home.dart';
 import 'package:nosok/services/auth.dart';
 import 'package:nosok/theme.dart';
-import 'package:nosok/utils/contstants.dart';
+import 'package:nosok/utils/constants.dart';
 
 enum Method { SignIn, SignUp }
 
