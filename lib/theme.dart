@@ -70,6 +70,11 @@ final TextStyle appBarTextStyle = TextStyle(
   fontSize: 22,
 );
 
+final OutlineInputBorder inputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+  Radius.circular(8),
+));
+
 MaterialColor createMaterialColor(Color color) {
   List strengths = <double>[.05];
   final swatch = <int, Color>{};

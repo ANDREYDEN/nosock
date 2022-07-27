@@ -58,7 +58,7 @@ class _SignPopupState extends State<SignPopup> {
                     TextFormField(
                       key: _fullNameKey,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(),
+                        border: inputBorder,
                         labelText: 'Full Name',
                       ),
                       validator: (String? value) {
@@ -74,7 +74,7 @@ class _SignPopupState extends State<SignPopup> {
               TextFormField(
                 key: _emailKey,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: inputBorder,
                   labelText: 'Email Address',
                 ),
                 validator: (String? value) {
@@ -90,7 +90,7 @@ class _SignPopupState extends State<SignPopup> {
                 key: _passwordKey,
                 obscureText: true,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: inputBorder,
                   labelText: 'Password',
                 ),
                 validator: (String? value) {

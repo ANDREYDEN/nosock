@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nosok/theme.dart';
 
 class GetToKnowPopup extends StatefulWidget {
   const GetToKnowPopup({Key? key}) : super(key: key);
@@ -41,13 +42,15 @@ class _GetToKnowPopupState extends State<GetToKnowPopup> {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: inputBorder,
                 labelText: 'Location',
               ),
             ),
-            DropdownButton<String>(
+            SizedBox(height: 10),
+            DropdownButtonFormField(
               hint: Text('Foot Size'),
               value: selectedSockSize,
+              decoration: InputDecoration(border: inputBorder),
               items: sockSizes.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -60,6 +63,7 @@ class _GetToKnowPopupState extends State<GetToKnowPopup> {
                 });
               },
             ),
+            SizedBox(height: 30),
             ElevatedButton(
               child: const Text('Next'),
               onPressed: () {},
