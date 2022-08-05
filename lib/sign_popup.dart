@@ -213,7 +213,12 @@ class _SignPopupState extends State<SignPopup> {
   Future<void> googleSignIn(context) async {
     try {
       await Auth.signInWithGoogle();
-      Navigator.of(context).pushNamed(Home.route);
+      if (widget.method == Method.SignIn) {
+        Navigator.of(context).pushNamed(Home.route);
+      } else {
+        Navigator.of(context).pop();
+        _renderShowModal();
+      }
     } catch (e) {
       print(
           'Something went wrong while signing in with Google: ' + e.toString());

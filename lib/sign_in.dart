@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nosok/get_to_know_popup.dart';
 import 'package:nosok/sign_popup.dart';
 import 'package:nosok/theme.dart';
 
@@ -57,8 +56,7 @@ class SignIn extends StatelessWidget {
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
                 builder: (BuildContext context) {
-                  // return SignPopup(Method.SignUp);
-                  return GetToKnowPopup();
+                  return SignPopup(Method.SignUp);
                 },
               );
             }),
