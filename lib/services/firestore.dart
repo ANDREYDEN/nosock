@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nosok/models/sock.dart';
+import 'package:nosok/models/userDetails.dart';
 
 class Firestore {
   static CollectionReference _socks =
@@ -32,5 +33,14 @@ class Firestore {
       'location': location,
       'footSize': footSize,
     });
+  }
+
+  static UserDetails getUserDetails(String? uid) {
+    if (uid == null) {
+      throw Exception('User ID not found.');
+    }
+
+    return UserDetails.fromFirestore(
+        _userDetails.doc(uid).get() as Map<String, dynamic>);
   }
 }
